@@ -3,523 +3,454 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Parth Brahmbhatt — Finance</title>
+<title>Parth Brahmbhatt — Rutgers Business School</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --navy: #12233F;
-    --navy-deep: #0C1A2E;
-    --paper: #F6F4EE;
-    --paper-line: #E4DFD1;
-    --ink: #1E2124;
-    --ink-soft: #4B5058;
-    --green: #1F4D3A;
-    --gold: #A8823C;
-    --gold-soft: #C9A968;
+    --scarlet: #CC0033;
+    --scarlet-dark: #9E0029;
+    --black: #17181A;
+    --grey-900: #232326;
+    --grey-600: #6B6D72;
+    --grey-300: #DADBDD;
+    --grey-100: #F4F4F5;
+    --white: #FFFFFF;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
     margin:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:'IBM Plex Sans', sans-serif;
+    background:var(--white);
+    color:var(--black);
+    font-family:'Inter', sans-serif;
     font-size:16px;
-    line-height:1.6;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
   }
   h1,h2,h3{
-    font-family:'Source Serif 4', serif;
+    font-family:'Barlow Semi Condensed', sans-serif;
     margin:0;
-    color:var(--navy);
-    font-weight:600;
-  }
-  .mono{font-family:'IBM Plex Mono', monospace;}
-  a{color:inherit;}
-  .wrap{max-width:860px; margin:0 auto; padding:0 28px;}
-
-  /* ---------- NAV ---------- */
-  nav{
-    position:sticky; top:0; z-index:50;
-    background:rgba(246,244,238,0.92);
-    backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--paper-line);
-  }
-  nav .wrap{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:14px 28px;
-  }
-  nav .brand{
-    font-family:'Source Serif 4', serif;
-    font-weight:600; font-size:1.05rem; color:var(--navy);
-    text-decoration:none;
+    color:var(--black);
+    font-weight:700;
     letter-spacing:0.2px;
   }
-  nav .links{display:flex; gap:26px;}
-  nav .links a{
-    text-decoration:none; font-size:0.92rem; color:var(--ink-soft);
-    border-bottom:1px solid transparent;
-    padding-bottom:2px;
-    transition:color .15s ease, border-color .15s ease;
-  }
-  nav .links a:hover{color:var(--navy); border-color:var(--gold);}
+  a{color:inherit;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 32px;}
 
-  /* ---------- HERO ---------- */
+  /* ---------- HEADER ---------- */
+  header.site{
+    position:sticky; top:0; z-index:50;
+    background:var(--white);
+    border-bottom:3px solid var(--scarlet);
+  }
+  header.site .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 32px;
+  }
+  header.site .brand{
+    font-family:'Barlow Semi Condensed', sans-serif;
+    font-weight:700; font-size:1.15rem;
+    text-decoration:none; color:var(--black);
+  }
+  header.site .brand span{color:var(--scarlet);}
+  header.site nav{display:flex; align-items:center; gap:8px;}
+  header.site nav a{
+    text-decoration:none;
+    font-size:0.92rem;
+    font-weight:500;
+    color:var(--grey-900);
+    padding:9px 16px;
+    border-radius:6px;
+    transition:background .15s ease, color .15s ease;
+  }
+  header.site nav a:hover{background:var(--grey-100);}
+  header.site nav a.resume-btn{
+    background:var(--scarlet);
+    color:var(--white);
+    font-weight:600;
+  }
+  header.site nav a.resume-btn:hover{background:var(--scarlet-dark);}
+
+  /* ---------- HERO / ABOUT ---------- */
   .hero{
-    background:var(--navy);
-    background-image:
-      radial-gradient(1200px 300px at 20% -10%, rgba(255,255,255,0.05), transparent);
-    color:#F0EEE6;
-    position:relative;
-    overflow:hidden;
-    border-bottom:3px solid var(--gold);
+    padding:88px 0 80px;
+    background:
+      radial-gradient(650px 260px at 100% 0%, rgba(204,0,51,0.06), transparent 70%);
   }
-  .hero .chart{
-    position:absolute; inset:0;
-    opacity:0.16;
-    pointer-events:none;
+  .hero-grid{
+    display:grid;
+    grid-template-columns:280px 1fr;
+    gap:64px;
+    align-items:center;
   }
-  .hero-inner{
-    position:relative;
-    padding:96px 28px 72px;
-  }
-  .eyebrow{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:0.8rem;
-    color:var(--gold-soft);
-    letter-spacing:0.03em;
-    margin-bottom:18px;
-  }
-  .hero h1{
-    color:#FBFAF6;
-    font-size:2.6rem;
-    line-height:1.15;
-    max-width:14ch;
-  }
-  .hero .statement{
-    margin-top:22px;
-    font-size:1.25rem;
-    max-width:46ch;
-    color:#D8D9DE;
-    font-weight:400;
-  }
-  .hero .meta{
-    margin-top:36px;
-    display:flex; flex-wrap:wrap; gap:22px;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:0.85rem;
-    color:#9FA6B5;
-  }
-  .hero .meta a{text-decoration:none; border-bottom:1px solid rgba(159,166,181,0.4);}
-  .hero .meta a:hover{border-color:var(--gold-soft); color:var(--gold-soft);}
-
-  .hero-row{
+  .photo-block{
     display:flex;
-    align-items:flex-end;
-    justify-content:space-between;
-    gap:44px;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
   }
-  .hero-text{min-width:0;}
-  .headshot{
-    flex-shrink:0;
-    width:150px;
-    height:150px;
-    border:3px solid var(--gold);
-    border-radius:4px;
+  .photo-ring{
+    width:220px; height:220px;
+    border-radius:50%;
+    padding:6px;
+    background:conic-gradient(from 180deg, var(--scarlet), #7a0020, var(--scarlet));
+    margin-bottom:22px;
+  }
+  .photo-ring .photo-inner{
+    width:100%; height:100%;
+    border-radius:50%;
     overflow:hidden;
+    border:4px solid var(--white);
+    background:var(--grey-100);
   }
-  .headshot img{
-    width:100%;
-    height:100%;
+  .photo-ring img{
+    width:100%; height:100%;
     object-fit:cover;
+    object-position:50% 18%;
     display:block;
   }
-
-  /* ---------- SECTIONS ---------- */
-  section{padding:72px 0;}
-  section + section{border-top:1px solid var(--paper-line);}
-  .section-head{
-    display:flex; align-items:baseline; justify-content:space-between;
-    margin-bottom:38px;
-    gap:16px;
+  .photo-block h1{
+    font-size:1.7rem;
+    line-height:1.2;
   }
-  .section-head h2{font-size:1.5rem;}
-  .section-head .tag{
-    font-family:'IBM Plex Mono', monospace;
+  .photo-block .school{
+    margin-top:8px;
+    font-size:1.02rem;
+    font-weight:600;
+    color:var(--scarlet);
+  }
+  .photo-block .classyear{
+    margin-top:3px;
+    font-size:0.92rem;
+    color:var(--grey-600);
+    font-weight:500;
+  }
+
+  .about-block .eyebrow{
+    font-size:0.8rem;
+    font-weight:600;
+    color:var(--scarlet);
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    margin-bottom:10px;
+  }
+  .about-block h2{
+    font-size:2rem;
+    margin-bottom:18px;
+  }
+  .about-block p{
+    font-size:1.08rem;
+    color:var(--grey-900);
+    max-width:56ch;
+    margin:0 0 14px;
+  }
+  .about-block .cta-row{
+    margin-top:26px;
+    display:flex; gap:14px; flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-block;
+    text-decoration:none;
+    font-weight:600;
+    font-size:0.95rem;
+    padding:12px 22px;
+    border-radius:7px;
+    transition:background .15s ease, color .15s ease, border-color .15s ease;
+  }
+  .btn-primary{background:var(--scarlet); color:var(--white);}
+  .btn-primary:hover{background:var(--scarlet-dark);}
+  .btn-outline{border:1.5px solid var(--grey-300); color:var(--black);}
+  .btn-outline:hover{border-color:var(--scarlet); color:var(--scarlet);}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:76px 0;}
+  section.alt{background:var(--grey-100);}
+  .section-head{
+    margin-bottom:44px;
+  }
+  .section-head .eyebrow{
+    font-size:0.8rem;
+    font-weight:600;
+    color:var(--scarlet);
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    margin-bottom:8px;
+  }
+  .section-head h2{font-size:1.9rem;}
+  .section-head p{
+    margin-top:10px;
+    color:var(--grey-600);
+    max-width:56ch;
+    font-size:1.02rem;
+  }
+
+  /* ---------- PROJECT CARD ---------- */
+  .project-card{
+    background:var(--white);
+    border:1px solid var(--grey-300);
+    border-top:4px solid var(--scarlet);
+    border-radius:10px;
+    padding:38px 40px;
+    box-shadow:0 1px 2px rgba(0,0,0,0.03);
+  }
+  .project-card .badge{
+    display:inline-block;
     font-size:0.78rem;
-    color:var(--ink-soft);
-    white-space:nowrap;
+    font-weight:600;
+    color:var(--scarlet-dark);
+    background:rgba(204,0,51,0.08);
+    padding:5px 12px;
+    border-radius:999px;
+    margin-bottom:16px;
+  }
+  .project-card h3{
+    font-size:1.5rem;
+    margin-bottom:6px;
+  }
+  .project-card .issuer{
+    color:var(--grey-600);
+    font-size:0.95rem;
+    margin-bottom:22px;
+  }
+  .project-card .lead{
+    font-size:1.02rem;
+    color:var(--grey-900);
+    margin-bottom:20px;
+    max-width:68ch;
+  }
+  .project-card ul{
+    margin:0 0 26px;
+    padding-left:22px;
+  }
+  .project-card li{
+    margin-bottom:10px;
+    font-size:1rem;
+    color:var(--grey-900);
+  }
+  .project-card .links{
+    display:flex; gap:14px; flex-wrap:wrap;
+    padding-top:22px;
+    border-top:1px solid var(--grey-300);
   }
 
   /* ---------- SKILLS ---------- */
-  .skill-groups{
+  .skills-grid{
     display:grid;
     grid-template-columns:repeat(2, 1fr);
-    gap:36px 40px;
+    gap:36px 48px;
   }
-  .skill-group h3{
-    font-size:0.95rem;
-    font-family:'IBM Plex Mono', monospace;
-    color:var(--green);
+  .skill-cat h3{
+    font-size:1.05rem;
+    font-weight:600;
+    margin-bottom:16px;
+    color:var(--black);
+  }
+  .pill-row{
+    display:flex; flex-wrap:wrap; gap:10px;
+  }
+  .pill{
+    display:inline-block;
+    background:var(--white);
+    border:1px solid var(--grey-300);
+    color:var(--grey-900);
+    font-size:0.9rem;
     font-weight:500;
-    margin-bottom:14px;
-    padding-bottom:8px;
-    border-bottom:1px solid var(--paper-line);
+    padding:8px 15px;
+    border-radius:999px;
   }
-  .skill-list{list-style:none; margin:0; padding:0;}
-  .skill-list li{
-    display:flex; justify-content:space-between;
-    padding:7px 0;
-    border-bottom:1px dotted var(--paper-line);
+
+  /* ---------- FOOTER / CONTACT ---------- */
+  footer.site{
+    background:var(--black);
+    color:#D8D9DC;
+    padding:56px 0 34px;
+  }
+  footer.site .footer-grid{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    flex-wrap:wrap;
+    gap:32px;
+  }
+  footer.site h2{
+    color:var(--white);
+    font-size:1.5rem;
+  }
+  footer.site p{color:#B7B9BE; max-width:36ch; margin-top:8px;}
+  footer.site .contact-links{
+    display:flex; flex-direction:column; gap:10px;
     font-size:0.96rem;
   }
-  .skill-list li:last-child{border-bottom:none;}
-  .skill-list .dim{color:var(--ink-soft); font-size:0.85rem; font-family:'IBM Plex Mono', monospace;}
-
-  /* ---------- TOMBSTONE / PROJECTS ---------- */
-  .tombstone{
-    border:1px solid var(--navy);
-    padding:30px 32px;
-    margin-bottom:26px;
-    position:relative;
-    background:#FCFBF7;
-  }
-  .tombstone::before{
-    content:"";
-    position:absolute; top:0; left:0; right:0; height:4px;
-    background:var(--gold);
-  }
-  .tombstone .rank{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:0.78rem;
-    color:var(--gold);
-    letter-spacing:0.03em;
-    margin-bottom:10px;
-  }
-  .tombstone h3{
-    font-size:1.25rem;
-    margin-bottom:6px;
-  }
-  .tombstone .issuer{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:0.82rem;
-    color:var(--ink-soft);
-    margin-bottom:18px;
-  }
-  .tombstone p{margin:0 0 10px; color:var(--ink);}
-  .tombstone ul{margin:10px 0 18px; padding-left:20px;}
-  .tombstone li{margin-bottom:6px;}
-  .tombstone .links{
-    display:flex; gap:20px; flex-wrap:wrap;
-    margin-top:16px;
-    padding-top:16px;
-    border-top:1px solid var(--paper-line);
-  }
-  .tombstone .links a{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:0.85rem;
+  footer.site .contact-links a{
     text-decoration:none;
-    color:var(--green);
-    border-bottom:1px solid var(--green);
+    color:#E7E8EA;
+    border-bottom:1px solid rgba(231,232,234,0.25);
     padding-bottom:1px;
+    width:fit-content;
   }
-  .tombstone .links a:hover{color:var(--gold); border-color:var(--gold);}
-  .tombstone.placeholder{
-    border-style:dashed;
-    border-color:#B9B2A0;
-    background:transparent;
-  }
-  .tombstone.placeholder::before{display:none;}
-  .tombstone.placeholder .rank{color:var(--ink-soft);}
-
-  /* ---------- EXPERIENCE ---------- */
-  .timeline{border-left:2px solid var(--paper-line); margin-left:6px;}
-  .tl-item{
-    position:relative;
-    padding:0 0 34px 28px;
-  }
-  .tl-item:last-child{padding-bottom:0;}
-  .tl-item::before{
-    content:"";
-    position:absolute; left:-7px; top:4px;
-    width:12px; height:12px;
-    background:var(--paper);
-    border:2px solid var(--green);
-    border-radius:50%;
-  }
-  .tl-item .when{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:0.8rem;
-    color:var(--ink-soft);
-    margin-bottom:4px;
-  }
-  .tl-item h3{font-size:1.08rem; margin-bottom:4px;}
-  .tl-item .role{color:var(--ink-soft); font-size:0.92rem; margin-bottom:10px;}
-  .tl-item p{margin:0; color:var(--ink);}
-
-  /* ---------- CREDENTIALS ---------- */
-  .cred-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:28px 40px;
-  }
-  .cred-list{list-style:none; margin:0; padding:0;}
-  .cred-list li{
-    padding:9px 0;
-    border-bottom:1px dotted var(--paper-line);
-    font-size:0.94rem;
-  }
-  .cred-list li:last-child{border-bottom:none;}
-  .cred-list .honor{color:var(--gold); font-family:'IBM Plex Mono', monospace; font-size:0.78rem; margin-right:8px;}
-
-  /* ---------- FOOTER ---------- */
-  footer{
-    background:var(--navy-deep);
-    color:#AEB4C0;
-    padding:48px 0 36px;
-  }
-  footer .wrap{
-    display:flex; justify-content:space-between; align-items:flex-end;
-    flex-wrap:wrap; gap:20px;
-  }
-  footer h2{color:#F0EEE6; font-size:1.3rem;}
-  footer .contact-links{display:flex; flex-direction:column; gap:8px; font-family:'IBM Plex Mono', monospace; font-size:0.88rem;}
-  footer a{text-decoration:none; color:#C9CDD6; border-bottom:1px solid rgba(201,205,214,0.3);}
-  footer a:hover{color:var(--gold-soft); border-color:var(--gold-soft);}
-  footer .fine{
-    margin-top:36px;
-    font-size:0.78rem;
-    color:#6E7686;
-    border-top:1px solid rgba(255,255,255,0.08);
+  footer.site .contact-links a:hover{color:var(--scarlet);border-color:var(--scarlet);}
+  footer.site .fine{
+    margin-top:40px;
     padding-top:20px;
+    border-top:1px solid rgba(255,255,255,0.1);
+    font-size:0.8rem;
+    color:#7C7E84;
   }
 
-  @media (max-width:680px){
-    .hero-inner{padding:72px 20px 56px;}
-    .hero h1{font-size:2rem; max-width:none;}
-    .hero-row{flex-direction:column-reverse; align-items:flex-start; gap:24px;}
-    .headshot{width:110px; height:110px;}
-    .skill-groups, .cred-grid{grid-template-columns:1fr;}
+  @media (max-width:800px){
+    .hero-grid{grid-template-columns:1fr; gap:40px;}
+    .photo-block{align-items:center;}
+    header.site nav a span.label{display:none;}
+    .skills-grid{grid-template-columns:1fr;}
+    .project-card{padding:28px 24px;}
+  }
+  @media (max-width:560px){
+    header.site .wrap{padding:14px 20px;}
+    header.site nav{gap:2px;}
+    header.site nav a{padding:8px 10px; font-size:0.85rem;}
+    .wrap{padding:0 20px;}
+    .about-block h2{font-size:1.6rem;}
     section{padding:56px 0;}
-    footer .wrap{flex-direction:column; align-items:flex-start;}
   }
 
-  :focus-visible{outline:2px solid var(--gold); outline-offset:2px;}
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-  }
+  :focus-visible{outline:2px solid var(--scarlet); outline-offset:2px;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
 </style>
 </head>
 <body>
 
-<nav>
+<header class="site">
   <div class="wrap">
-    <a class="brand" href="#top">Parth Brahmbhatt</a>
-    <div class="links">
+    <a class="brand" href="#top">Parth <span>Brahmbhatt</span></a>
+    <nav>
       <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#credentials">Credentials</a>
       <a href="#contact">Contact</a>
-    </div>
-  </div>
-</nav>
-
-<header class="hero" id="top">
-  <svg class="chart" viewBox="0 0 860 340" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <polyline points="0,300 80,280 160,290 240,240 320,255 400,190 480,210 560,150 640,165 720,95 800,110 860,60"
-      fill="none" stroke="#C9A968" stroke-width="2.5"/>
-    <polyline points="0,300 80,280 160,290 240,240 320,255 400,190 480,210 560,150 640,165 720,95 800,110 860,60 860,340 0,340"
-      fill="#C9A968" fill-opacity="0.08" stroke="none"/>
-  </svg>
-  <div class="wrap hero-inner">
-    <div class="hero-row">
-      <div class="hero-text">
-        <div class="eyebrow">B.S. Finance · Rutgers Business School · Class of 2029</div>
-        <h1>Parth Brahmbhatt</h1>
-        <p class="statement">A finance sophomore building toward investment banking through equity research, financial modeling, and two years of live sales leadership.</p>
-        <div class="meta">
-          <a href="http://linkedin.com/in/parthbrahmbhatt30" target="_blank" rel="noopener">linkedin.com/in/parthbrahmbhatt30</a>
-          <span>(856) 739-7187</span>
-        </div>
-      </div>
-      <div class="headshot">
-        <img src="assets/headshot.png" alt="Parth Brahmbhatt">
-      </div>
-    </div>
+      <a class="resume-btn" href="assets/Parth_Brahmbhatt_Resume.pdf" download>Download Resume</a>
+    </nav>
   </div>
 </header>
 
-<main>
+<main id="top">
 
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Skills</h2>
-        <span class="tag">// core competencies</span>
+  <!-- HERO / ABOUT -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="photo-block">
+        <div class="photo-ring">
+          <div class="photo-inner">
+            <img src="assets/headshot.png" alt="Parth Brahmbhatt">
+          </div>
+        </div>
+        <h1>Parth Brahmbhatt</h1>
+        <div class="school">Rutgers Business School</div>
+        <div class="classyear">Class of 2029</div>
       </div>
-      <div class="skill-groups">
-        <div class="skill-group">
-          <h3>Finance &amp; Analysis</h3>
-          <ul class="skill-list">
-            <li>Financial Analysis <span class="dim">modeling / valuation</span></li>
-            <li>Internal Audit <span class="dim">Marriott Intl.</span></li>
-            <li>Equity Research <span class="dim">SHW pitch</span></li>
-            <li>Sales &amp; Client Management <span class="dim">2 yrs</span></li>
-          </ul>
-        </div>
-        <div class="skill-group">
-          <h3>Tools &amp; Platforms</h3>
-          <ul class="skill-list">
-            <li>Excel <span class="dim">3-statement modeling</span></li>
-            <li>PowerPoint <span class="dim">pitch decks</span></li>
-            <li>Power BI <span class="dim">dashboards</span></li>
-            <li>Bloomberg Terminal <span class="dim">market data</span></li>
-            <li>Copilot / AI Prompting <span class="dim">workflow</span></li>
-            <li>GitHub <span class="dim">version control</span></li>
-          </ul>
-        </div>
-        <div class="skill-group">
-          <h3>Certifications &amp; Coursework</h3>
-          <ul class="skill-list">
-            <li>Wall Street Prep <span class="dim">Financial Statement Analysis</span></li>
-            <li>Wall Street Prep <span class="dim">Analyzing Financial Reports</span></li>
-            <li>Wall Street Prep <span class="dim">Microsoft Excel</span></li>
-            <li>Bloomberg <span class="dim">Market Concepts</span></li>
-            <li>McKinsey <span class="dim">Forward Program</span></li>
-            <li>Northeastern Univ. <span class="dim">Leveraging AI in Business</span></li>
-            <li>Google <span class="dim">Digital Marketing &amp; E-commerce</span></li>
-            <li>LinkedIn <span class="dim">Business Process Analysis</span></li>
-          </ul>
-        </div>
-        <div class="skill-group">
-          <h3>Languages</h3>
-          <ul class="skill-list">
-            <li>Gujarati <span class="dim">native</span></li>
-            <li>Hindi <span class="dim">professional</span></li>
-            <li>English <span class="dim">professional</span></li>
-          </ul>
+
+      <div class="about-block">
+        <div class="eyebrow">About Me</div>
+        <h2>Finance student building toward investment banking.</h2>
+        <p>Hi, I'm Parth — a sophomore at Rutgers Business School studying Finance. I currently work as a Sales Lead, a role I've held for two years, and spent this past summer as an Audit Intern at Marriott International. I'm currently focused on breaking into investment banking.</p>
+        <p>Take a look at my projects below.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#projects">View My Projects</a>
+          <a class="btn btn-outline" href="#contact">Get In Touch</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- PROJECTS -->
-  <section id="projects">
+  <section id="projects" class="alt">
     <div class="wrap">
       <div class="section-head">
-        <h2>Projects</h2>
-        <span class="tag">// selected work</span>
+        <div class="eyebrow">Projects</div>
+        <h2>Equity Research &amp; Stock Pitch</h2>
+        <p>Independent equity research completed for the Little Investment Bankers of Rutgers stock pitch competition.</p>
       </div>
 
-      <div class="tombstone">
-        <div class="rank">4th Place / 60 · Bender Trust Stock Pitch Competition</div>
-        <h3>Sherwin-Williams (NYSE: SHW) — Equity Research &amp; Stock Pitch</h3>
+      <div class="project-card">
+        <span class="badge">4th Place / 60 — Bender Trust Stock Pitch Competition</span>
+        <h3>Sherwin-Williams (NYSE: SHW)</h3>
         <div class="issuer">Little Investment Bankers of Rutgers · December 2025</div>
-        <p>Full-length equity research report and investment pitch on Sherwin-Williams, built independently from company filings and market data.</p>
+        <p class="lead">Wrote a full equity research report on Sherwin-Williams, breaking down the business and its position in the specialty coatings market, then built that research into a complete stock pitch.</p>
         <ul>
-          <li>Wrote the investment thesis and business breakdown, positioning SHW within the specialty coatings market.</li>
-          <li>Built a complete three-statement financial model — income statement, balance sheet, and cash flow — with a five-year projection.</li>
-          <li>Ran a revenue build, peer comparison, and valuation to support a final price target and recommendation.</li>
-          <li>Placed 4th out of 60 competing pitches.</li>
+          <li>Researched and wrote the company breakdown — business model, competitive position, and industry dynamics — as the foundation of the report.</li>
+          <li>Developed an investment thesis explaining why SHW was attractive (or not) at its current valuation.</li>
+          <li>Built a full revenue model projecting future performance based on historical trends and industry drivers.</li>
+          <li>Ran a complete financial analysis across the income statement, balance sheet, and cash flow statement.</li>
+          <li>Completed a peer comparison against competitors in the coatings and specialty chemicals space.</li>
+          <li>Finalized a valuation to support a price target and investment recommendation.</li>
         </ul>
         <div class="links">
-          <a href="assets/SHW_Financial_Model.xlsx" download>Download financial model (.xlsx)</a>
-        </div>
-      </div>
-
-      <div class="tombstone">
-        <div class="rank">Internal Audit Internship · Summer 2025</div>
-        <h3>Corporate Audit — Marriott International</h3>
-        <div class="issuer">Marriott International, Inc.</div>
-        <p>Supported the internal audit function across corporate operations, applying financial analysis and control-testing skills in a live audit environment.</p>
-        <ul>
-          <li>Assisted with internal control testing and documentation across audit engagements.</li>
-          <li>Reviewed financial data for accuracy and compliance with company policy.</li>
-        </ul>
-        <div class="links">
-          <a href="http://linkedin.com/in/parthbrahmbhatt30" target="_blank" rel="noopener">More on LinkedIn</a>
-        </div>
-      </div>
-
-      <div class="tombstone placeholder">
-        <div class="rank">[Add dates]</div>
-        <h3>[Sales Lead — add company name]</h3>
-        <div class="issuer">[Company] · 2 years</div>
-        <p>[Replace with 2–3 sentences: what you sold, who you managed or led, and a measurable result — e.g. quota attainment, team size, revenue driven.]</p>
-        <div class="links">
-          <a href="#">[Add a link — team page, LinkedIn post, or reference]</a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Experience &amp; Leadership</h2>
-        <span class="tag">// timeline</span>
-      </div>
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="when">Summer 2025</div>
-          <h3>Audit Intern</h3>
-          <div class="role">Marriott International</div>
-          <p>Internal audit rotation supporting control testing and financial review across corporate engagements.</p>
-        </div>
-        <div class="tl-item">
-          <div class="when">2 years, ongoing</div>
-          <h3>Sales Lead</h3>
-          <div class="role">[Add company / organization name]</div>
-          <p>[Add a sentence on scope: territory, team, product, or key achievement.]</p>
-        </div>
-        <div class="tl-item">
-          <div class="when">2025 – Present</div>
-          <h3>Road to Wall Street (RTWS)</h3>
-          <div class="role">MSD Scholar</div>
-          <p>Selected as a scholar in Road to Wall Street, a program preparing students for careers in investment banking.</p>
-        </div>
-        <div class="tl-item">
-          <div class="when">2025 – Present</div>
-          <h3>Personal Finance Club</h3>
-          <div class="role">Rutgers Business School</div>
-          <p>Member of the Personal Finance Club, engaging with peers on markets, investing, and career development in finance.</p>
+          <a class="btn btn-outline" href="assets/SHW_Financial_Model.xlsx" download>Download Financial Model (.xlsx)</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CREDENTIALS -->
-  <section id="credentials">
+  <!-- SKILLS -->
+  <section id="skills">
     <div class="wrap">
       <div class="section-head">
-        <h2>Credentials</h2>
-        <span class="tag">// honors &amp; scholarships</span>
+        <div class="eyebrow">Skills</div>
+        <h2>What I bring to the table</h2>
       </div>
-      <div class="cred-grid">
-        <ul class="cred-list">
-          <li><span class="honor">HONOR</span>Dean's List</li>
-          <li><span class="honor">HONOR</span>Road to Wall Street — MSD Scholar</li>
-        </ul>
-        <ul class="cred-list">
-          <li><span class="honor">HONOR</span>Business Student Transition, Access &amp; Retention Scholar</li>
-          <li><span class="honor">HONOR</span>Little Investment Bankers of Rutgers — Bender Trust Stock Pitch, 4th Place / 60</li>
-        </ul>
+      <div class="skills-grid">
+        <div class="skill-cat">
+          <h3>Finance &amp; Experience</h3>
+          <div class="pill-row">
+            <span class="pill">Financial Analysis</span>
+            <span class="pill">Equity Research</span>
+            <span class="pill">Internal Audit</span>
+            <span class="pill">Sales Leadership</span>
+            <span class="pill">Client Management</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <h3>Tools &amp; Platforms</h3>
+          <div class="pill-row">
+            <span class="pill">Excel</span>
+            <span class="pill">PowerPoint</span>
+            <span class="pill">Power BI</span>
+            <span class="pill">Bloomberg Terminal</span>
+            <span class="pill">Copilot / AI Prompting</span>
+            <span class="pill">GitHub</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <h3>Certifications &amp; Coursework</h3>
+          <div class="pill-row">
+            <span class="pill">Wall Street Prep — Financial Statement Analysis</span>
+            <span class="pill">Wall Street Prep — Analyzing Financial Reports</span>
+            <span class="pill">Wall Street Prep — Excel</span>
+            <span class="pill">Bloomberg Market Concepts</span>
+            <span class="pill">McKinsey Forward Program</span>
+            <span class="pill">Northeastern — AI in Business</span>
+            <span class="pill">Google — Digital Marketing &amp; E-commerce</span>
+            <span class="pill">LinkedIn — Business Process Analysis</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <h3>Languages</h3>
+          <div class="pill-row">
+            <span class="pill">Gujarati (Native)</span>
+            <span class="pill">Hindi (Professional)</span>
+            <span class="pill">English (Professional)</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
 </main>
 
-<footer id="contact">
-  <div class="wrap">
+<footer class="site" id="contact">
+  <div class="wrap footer-grid">
     <div>
-      <h2>Let's talk finance.</h2>
-      <p style="max-width:38ch; color:#9AA1AF; margin-top:8px;">Open to conversations about investment banking, equity research, and analyst opportunities.</p>
+      <h2>Let's connect.</h2>
+      <p>Open to conversations about investment banking, equity research, and analyst opportunities.</p>
     </div>
     <div class="contact-links">
       <a href="http://linkedin.com/in/parthbrahmbhatt30" target="_blank" rel="noopener">linkedin.com/in/parthbrahmbhatt30</a>
