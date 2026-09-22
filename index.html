@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parth Brahmbhatt — Finance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #12233F;
+    --navy-deep: #0C1A2E;
+    --paper: #F6F4EE;
+    --paper-line: #E4DFD1;
+    --ink: #1E2124;
+    --ink-soft: #4B5058;
+    --green: #1F4D3A;
+    --gold: #A8823C;
+    --gold-soft: #C9A968;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+  }
+  h1,h2,h3{
+    font-family:'Source Serif 4', serif;
+    margin:0;
+    color:var(--navy);
+    font-weight:600;
+  }
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  a{color:inherit;}
+  .wrap{max-width:860px; margin:0 auto; padding:0 28px;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(246,244,238,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--paper-line);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 28px;
+  }
+  nav .brand{
+    font-family:'Source Serif 4', serif;
+    font-weight:600; font-size:1.05rem; color:var(--navy);
+    text-decoration:none;
+    letter-spacing:0.2px;
+  }
+  nav .links{display:flex; gap:26px;}
+  nav .links a{
+    text-decoration:none; font-size:0.92rem; color:var(--ink-soft);
+    border-bottom:1px solid transparent;
+    padding-bottom:2px;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  nav .links a:hover{color:var(--navy); border-color:var(--gold);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--navy);
+    background-image:
+      radial-gradient(1200px 300px at 20% -10%, rgba(255,255,255,0.05), transparent);
+    color:#F0EEE6;
+    position:relative;
+    overflow:hidden;
+    border-bottom:3px solid var(--gold);
+  }
+  .hero .chart{
+    position:absolute; inset:0;
+    opacity:0.16;
+    pointer-events:none;
+  }
+  .hero-inner{
+    position:relative;
+    padding:96px 28px 72px;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.8rem;
+    color:var(--gold-soft);
+    letter-spacing:0.03em;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    color:#FBFAF6;
+    font-size:2.6rem;
+    line-height:1.15;
+    max-width:14ch;
+  }
+  .hero .statement{
+    margin-top:22px;
+    font-size:1.25rem;
+    max-width:46ch;
+    color:#D8D9DE;
+    font-weight:400;
+  }
+  .hero .meta{
+    margin-top:36px;
+    display:flex; flex-wrap:wrap; gap:22px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.85rem;
+    color:#9FA6B5;
+  }
+  .hero .meta a{text-decoration:none; border-bottom:1px solid rgba(159,166,181,0.4);}
+  .hero .meta a:hover{border-color:var(--gold-soft); color:var(--gold-soft);}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:72px 0;}
+  section + section{border-top:1px solid var(--paper-line);}
+  .section-head{
+    display:flex; align-items:baseline; justify-content:space-between;
+    margin-bottom:38px;
+    gap:16px;
+  }
+  .section-head h2{font-size:1.5rem;}
+  .section-head .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    color:var(--ink-soft);
+    white-space:nowrap;
+  }
+
+  /* ---------- SKILLS ---------- */
+  .skill-groups{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:36px 40px;
+  }
+  .skill-group h3{
+    font-size:0.95rem;
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--green);
+    font-weight:500;
+    margin-bottom:14px;
+    padding-bottom:8px;
+    border-bottom:1px solid var(--paper-line);
+  }
+  .skill-list{list-style:none; margin:0; padding:0;}
+  .skill-list li{
+    display:flex; justify-content:space-between;
+    padding:7px 0;
+    border-bottom:1px dotted var(--paper-line);
+    font-size:0.96rem;
+  }
+  .skill-list li:last-child{border-bottom:none;}
+  .skill-list .dim{color:var(--ink-soft); font-size:0.85rem; font-family:'IBM Plex Mono', monospace;}
+
+  /* ---------- TOMBSTONE / PROJECTS ---------- */
+  .tombstone{
+    border:1px solid var(--navy);
+    padding:30px 32px;
+    margin-bottom:26px;
+    position:relative;
+    background:#FCFBF7;
+  }
+  .tombstone::before{
+    content:"";
+    position:absolute; top:0; left:0; right:0; height:4px;
+    background:var(--gold);
+  }
+  .tombstone .rank{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    color:var(--gold);
+    letter-spacing:0.03em;
+    margin-bottom:10px;
+  }
+  .tombstone h3{
+    font-size:1.25rem;
+    margin-bottom:6px;
+  }
+  .tombstone .issuer{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.82rem;
+    color:var(--ink-soft);
+    margin-bottom:18px;
+  }
+  .tombstone p{margin:0 0 10px; color:var(--ink);}
+  .tombstone ul{margin:10px 0 18px; padding-left:20px;}
+  .tombstone li{margin-bottom:6px;}
+  .tombstone .links{
+    display:flex; gap:20px; flex-wrap:wrap;
+    margin-top:16px;
+    padding-top:16px;
+    border-top:1px solid var(--paper-line);
+  }
+  .tombstone .links a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.85rem;
+    text-decoration:none;
+    color:var(--green);
+    border-bottom:1px solid var(--green);
+    padding-bottom:1px;
+  }
+  .tombstone .links a:hover{color:var(--gold); border-color:var(--gold);}
+  .tombstone.placeholder{
+    border-style:dashed;
+    border-color:#B9B2A0;
+    background:transparent;
+  }
+  .tombstone.placeholder::before{display:none;}
+  .tombstone.placeholder .rank{color:var(--ink-soft);}
+
+  /* ---------- EXPERIENCE ---------- */
+  .timeline{border-left:2px solid var(--paper-line); margin-left:6px;}
+  .tl-item{
+    position:relative;
+    padding:0 0 34px 28px;
+  }
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:"";
+    position:absolute; left:-7px; top:4px;
+    width:12px; height:12px;
+    background:var(--paper);
+    border:2px solid var(--green);
+    border-radius:50%;
+  }
+  .tl-item .when{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.8rem;
+    color:var(--ink-soft);
+    margin-bottom:4px;
+  }
+  .tl-item h3{font-size:1.08rem; margin-bottom:4px;}
+  .tl-item .role{color:var(--ink-soft); font-size:0.92rem; margin-bottom:10px;}
+  .tl-item p{margin:0; color:var(--ink);}
+
+  /* ---------- CREDENTIALS ---------- */
+  .cred-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px 40px;
+  }
+  .cred-list{list-style:none; margin:0; padding:0;}
+  .cred-list li{
+    padding:9px 0;
+    border-bottom:1px dotted var(--paper-line);
+    font-size:0.94rem;
+  }
+  .cred-list li:last-child{border-bottom:none;}
+  .cred-list .honor{color:var(--gold); font-family:'IBM Plex Mono', monospace; font-size:0.78rem; margin-right:8px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--navy-deep);
+    color:#AEB4C0;
+    padding:48px 0 36px;
+  }
+  footer .wrap{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    flex-wrap:wrap; gap:20px;
+  }
+  footer h2{color:#F0EEE6; font-size:1.3rem;}
+  footer .contact-links{display:flex; flex-direction:column; gap:8px; font-family:'IBM Plex Mono', monospace; font-size:0.88rem;}
+  footer a{text-decoration:none; color:#C9CDD6; border-bottom:1px solid rgba(201,205,214,0.3);}
+  footer a:hover{color:var(--gold-soft); border-color:var(--gold-soft);}
+  footer .fine{
+    margin-top:36px;
+    font-size:0.78rem;
+    color:#6E7686;
+    border-top:1px solid rgba(255,255,255,0.08);
+    padding-top:20px;
+  }
+
+  @media (max-width:680px){
+    .hero-inner{padding:72px 20px 56px;}
+    .hero h1{font-size:2rem; max-width:none;}
+    .skill-groups, .cred-grid{grid-template-columns:1fr;}
+    section{padding:56px 0;}
+    footer .wrap{flex-direction:column; align-items:flex-start;}
+  }
+
+  :focus-visible{outline:2px solid var(--gold); outline-offset:2px;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">Parth Brahmbhatt</a>
+    <div class="links">
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#credentials">Credentials</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <svg class="chart" viewBox="0 0 860 340" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <polyline points="0,300 80,280 160,290 240,240 320,255 400,190 480,210 560,150 640,165 720,95 800,110 860,60"
+      fill="none" stroke="#C9A968" stroke-width="2.5"/>
+    <polyline points="0,300 80,280 160,290 240,240 320,255 400,190 480,210 560,150 640,165 720,95 800,110 860,60 860,340 0,340"
+      fill="#C9A968" fill-opacity="0.08" stroke="none"/>
+  </svg>
+  <div class="wrap hero-inner">
+    <div class="eyebrow">B.S. Finance · Rutgers Business School · Class of 2029</div>
+    <h1>Parth Brahmbhatt</h1>
+    <p class="statement">A finance sophomore building toward investment banking through equity research, financial modeling, and two years of live sales leadership.</p>
+    <div class="meta">
+      <a href="http://linkedin.com/in/parthbrahmbhatt30" target="_blank" rel="noopener">linkedin.com/in/parthbrahmbhatt30</a>
+      <span>(856) 739-7187</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Skills</h2>
+        <span class="tag">// core competencies</span>
+      </div>
+      <div class="skill-groups">
+        <div class="skill-group">
+          <h3>Finance &amp; Analysis</h3>
+          <ul class="skill-list">
+            <li>Financial Analysis <span class="dim">modeling / valuation</span></li>
+            <li>Internal Audit <span class="dim">Marriott Intl.</span></li>
+            <li>Equity Research <span class="dim">SHW pitch</span></li>
+            <li>Sales &amp; Client Management <span class="dim">2 yrs</span></li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Tools &amp; Platforms</h3>
+          <ul class="skill-list">
+            <li>Excel <span class="dim">3-statement modeling</span></li>
+            <li>PowerPoint <span class="dim">pitch decks</span></li>
+            <li>Power BI <span class="dim">dashboards</span></li>
+            <li>Bloomberg Terminal <span class="dim">market data</span></li>
+            <li>Copilot / AI Prompting <span class="dim">workflow</span></li>
+            <li>GitHub <span class="dim">version control</span></li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Certifications &amp; Coursework</h3>
+          <ul class="skill-list">
+            <li>Wall Street Prep <span class="dim">Financial Statement Analysis</span></li>
+            <li>Wall Street Prep <span class="dim">Analyzing Financial Reports</span></li>
+            <li>Wall Street Prep <span class="dim">Microsoft Excel</span></li>
+            <li>Bloomberg <span class="dim">Market Concepts</span></li>
+            <li>McKinsey <span class="dim">Forward Program</span></li>
+            <li>Northeastern Univ. <span class="dim">Leveraging AI in Business</span></li>
+            <li>Google <span class="dim">Digital Marketing &amp; E-commerce</span></li>
+            <li>LinkedIn <span class="dim">Business Process Analysis</span></li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Languages</h3>
+          <ul class="skill-list">
+            <li>Gujarati <span class="dim">native</span></li>
+            <li>Hindi <span class="dim">professional</span></li>
+            <li>English <span class="dim">professional</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Projects</h2>
+        <span class="tag">// selected work</span>
+      </div>
+
+      <div class="tombstone">
+        <div class="rank">4th Place / 60 · Bender Trust Stock Pitch Competition</div>
+        <h3>Sherwin-Williams (NYSE: SHW) — Equity Research &amp; Stock Pitch</h3>
+        <div class="issuer">Little Investment Bankers of Rutgers · December 2025</div>
+        <p>Full-length equity research report and investment pitch on Sherwin-Williams, built independently from company filings and market data.</p>
+        <ul>
+          <li>Wrote the investment thesis and business breakdown, positioning SHW within the specialty coatings market.</li>
+          <li>Built a complete three-statement financial model — income statement, balance sheet, and cash flow — with a five-year projection.</li>
+          <li>Ran a revenue build, peer comparison, and valuation to support a final price target and recommendation.</li>
+          <li>Placed 4th out of 60 competing pitches.</li>
+        </ul>
+        <div class="links">
+          <a href="assets/SHW_Financial_Model.xlsx" download>Download financial model (.xlsx)</a>
+        </div>
+      </div>
+
+      <div class="tombstone">
+        <div class="rank">Internal Audit Internship · Summer 2025</div>
+        <h3>Corporate Audit — Marriott International</h3>
+        <div class="issuer">Marriott International, Inc.</div>
+        <p>Supported the internal audit function across corporate operations, applying financial analysis and control-testing skills in a live audit environment.</p>
+        <ul>
+          <li>Assisted with internal control testing and documentation across audit engagements.</li>
+          <li>Reviewed financial data for accuracy and compliance with company policy.</li>
+        </ul>
+        <div class="links">
+          <a href="http://linkedin.com/in/parthbrahmbhatt30" target="_blank" rel="noopener">More on LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="tombstone placeholder">
+        <div class="rank">[Add dates]</div>
+        <h3>[Sales Lead — add company name]</h3>
+        <div class="issuer">[Company] · 2 years</div>
+        <p>[Replace with 2–3 sentences: what you sold, who you managed or led, and a measurable result — e.g. quota attainment, team size, revenue driven.]</p>
+        <div class="links">
+          <a href="#">[Add a link — team page, LinkedIn post, or reference]</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Experience &amp; Leadership</h2>
+        <span class="tag">// timeline</span>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="when">Summer 2025</div>
+          <h3>Audit Intern</h3>
+          <div class="role">Marriott International</div>
+          <p>Internal audit rotation supporting control testing and financial review across corporate engagements.</p>
+        </div>
+        <div class="tl-item">
+          <div class="when">2 years, ongoing</div>
+          <h3>Sales Lead</h3>
+          <div class="role">[Add company / organization name]</div>
+          <p>[Add a sentence on scope: territory, team, product, or key achievement.]</p>
+        </div>
+        <div class="tl-item">
+          <div class="when">2025 – Present</div>
+          <h3>Road to Wall Street (RTWS)</h3>
+          <div class="role">MSD Scholar</div>
+          <p>Selected as a scholar in Road to Wall Street, a program preparing students for careers in investment banking.</p>
+        </div>
+        <div class="tl-item">
+          <div class="when">2025 – Present</div>
+          <h3>Personal Finance Club</h3>
+          <div class="role">Rutgers Business School</div>
+          <p>Member of the Personal Finance Club, engaging with peers on markets, investing, and career development in finance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREDENTIALS -->
+  <section id="credentials">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Credentials</h2>
+        <span class="tag">// honors &amp; scholarships</span>
+      </div>
+      <div class="cred-grid">
+        <ul class="cred-list">
+          <li><span class="honor">HONOR</span>Dean's List</li>
+          <li><span class="honor">HONOR</span>Road to Wall Street — MSD Scholar</li>
+        </ul>
+        <ul class="cred-list">
+          <li><span class="honor">HONOR</span>Business Student Transition, Access &amp; Retention Scholar</li>
+          <li><span class="honor">HONOR</span>Little Investment Bankers of Rutgers — Bender Trust Stock Pitch, 4th Place / 60</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div>
+      <h2>Let's talk finance.</h2>
+      <p style="max-width:38ch; color:#9AA1AF; margin-top:8px;">Open to conversations about investment banking, equity research, and analyst opportunities.</p>
+    </div>
+    <div class="contact-links">
+      <a href="http://linkedin.com/in/parthbrahmbhatt30" target="_blank" rel="noopener">linkedin.com/in/parthbrahmbhatt30</a>
+      <a href="tel:+18567397187">(856) 739-7187</a>
+    </div>
+  </div>
+  <div class="wrap fine">© 2026 Parth Brahmbhatt · Rutgers Business School</div>
+</footer>
+
+</body>
+</html>
