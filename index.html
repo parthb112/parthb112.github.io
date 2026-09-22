@@ -114,6 +114,28 @@
   .hero .meta a{text-decoration:none; border-bottom:1px solid rgba(159,166,181,0.4);}
   .hero .meta a:hover{border-color:var(--gold-soft); color:var(--gold-soft);}
 
+  .hero-row{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:44px;
+  }
+  .hero-text{min-width:0;}
+  .headshot{
+    flex-shrink:0;
+    width:150px;
+    height:150px;
+    border:3px solid var(--gold);
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .headshot img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+
   /* ---------- SECTIONS ---------- */
   section{padding:72px 0;}
   section + section{border-top:1px solid var(--paper-line);}
@@ -276,6 +298,8 @@
   @media (max-width:680px){
     .hero-inner{padding:72px 20px 56px;}
     .hero h1{font-size:2rem; max-width:none;}
+    .hero-row{flex-direction:column-reverse; align-items:flex-start; gap:24px;}
+    .headshot{width:110px; height:110px;}
     .skill-groups, .cred-grid{grid-template-columns:1fr;}
     section{padding:56px 0;}
     footer .wrap{flex-direction:column; align-items:flex-start;}
@@ -310,12 +334,19 @@
       fill="#C9A968" fill-opacity="0.08" stroke="none"/>
   </svg>
   <div class="wrap hero-inner">
-    <div class="eyebrow">B.S. Finance · Rutgers Business School · Class of 2029</div>
-    <h1>Parth Brahmbhatt</h1>
-    <p class="statement">A finance sophomore building toward investment banking through equity research, financial modeling, and two years of live sales leadership.</p>
-    <div class="meta">
-      <a href="http://linkedin.com/in/parthbrahmbhatt30" target="_blank" rel="noopener">linkedin.com/in/parthbrahmbhatt30</a>
-      <span>(856) 739-7187</span>
+    <div class="hero-row">
+      <div class="hero-text">
+        <div class="eyebrow">B.S. Finance · Rutgers Business School · Class of 2029</div>
+        <h1>Parth Brahmbhatt</h1>
+        <p class="statement">A finance sophomore building toward investment banking through equity research, financial modeling, and two years of live sales leadership.</p>
+        <div class="meta">
+          <a href="http://linkedin.com/in/parthbrahmbhatt30" target="_blank" rel="noopener">linkedin.com/in/parthbrahmbhatt30</a>
+          <span>(856) 739-7187</span>
+        </div>
+      </div>
+      <div class="headshot">
+        <img src="assets/headshot.png" alt="Parth Brahmbhatt">
+      </div>
     </div>
   </div>
 </header>
